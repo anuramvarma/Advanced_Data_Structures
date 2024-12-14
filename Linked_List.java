@@ -8,7 +8,7 @@ class Node
         next = null;
     }
 }
-public class LinkedList 
+public class Linked_List 
 {
     Node head;
     void createNode(int d) 
@@ -123,25 +123,31 @@ public class LinkedList
     }
     public static void main(String[] args) 
     {
-        LinkedList list = new LinkedList();
+        Linked_List list = new Linked_List();
         list.createNode(10);
         list.display();
         list.countOfNodes();
+        
         System.out.print("Insert at beginning:");
         list.insertAtBeginning(40);
         list.display();
+        
         System.out.print("Insert at end:");
         list.insertAtEnd(30);
         list.display();
+        
         System.out.print("Inserted at 2nd position:");
         list.insertAtPosition(60, 2);
         list.display();
+        
         System.out.print("Deleted at beginning:");
         list.deleteAtBeginning();
         list.display();
+        
         System.out.print("Delete at end:");
         list.deleteAtEnd();
         list.display();
+        
         System.out.print("Deleted at 2nd position:");
         list.deleteAtPosition(2);
         list.display();
