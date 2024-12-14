@@ -1,5 +1,5 @@
 import java.util.LinkedList;
-public class LL
+public class LinkedList
 {
     public static void main(String[] args) 
     {
