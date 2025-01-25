@@ -1,46 +1,62 @@
- import java.util.*;
- public class MergeS 
+import java.util.*;
+class Merge_Sort
+{
+public static void main(String []args)
  {
- 	private static int[] b;
- 	public static void mergeSort(int[] a, int low, int high)
- 		{
-			if (low < high) 
-			{
- 					int mid = (low + high) / 2;
- 					mergeSort(a, low, mid);
- 					mergeSort(a, mid + 1, high);
- 					merge(a, low, mid, high);
- 			}
- 		}
- 	public static void merge(int[] a, int low, int mid, int high) 
- 		{
- 		  int i = low, j = mid + 1, k = low;
-			while (i <= mid && j <= high)
-				if (a[i]<=a[j])
-						b[k++] = a[i++];
-				else
- 						b[k++] = a[j++];
-			while (i <= mid)
-					b[k++] = a[i++];
-			 while (j <= high)
-					b[k++] = a[j++];
- 						for (int h = low; h <= high; h++)
- 									a[h] = b[h];
- 		}
- 				public static void main(String[] args) 
-					{
- 						Scanner scanner = new Scanner(System.in);
-						System.out.println("Enter the Size of Array:");
-			 			int n = scanner.nextInt();
- 						int[] array = new int[n];
- 						b = new int[n];
-            System.out.println("Enter the elements into Array:");
- 							for (int i = 0; i < n; i++)
- 									array[i] = scanner.nextInt();
- 						mergeSort(array, 0, array.length - 1);
- 						System.out.println("Sorted Array: ");
- 							 for (int num : array)
- 									System.out.print(num + " ");
-						scanner.close();
-					}
+	Scanner sc = new Scanner(System.in);
+	Sort s = new Sort();
+	System.out.printf("Enter the size of an Array:");
+	int n = sc.nextInt();
+	System.out.printf("Enter the %d elements in array:",n);
+	int a[] = new int[n];
+	for(int i=0;i<n;i++)
+		a[i] = sc.nextInt();
+	long st = System.nanoTime();
+	System.out.printf("Before Sorting::");
+	s.display(a);
+	s.divide(a,0,n-1);
+	long et = System.nanoTime();
+	System.out.print("\nAfter Sorting::");
+	s.display(a);
+	System.out.println("\nTime duration:" + (et-st));
+   }
+}
+class Sort
+ {
+    public static void merge(int a[],int start,int mid,int end)
+   {
+	int i = start;
+	int j = mid+1;;
+	int k = start;
+	int b[] = new int[a.length];
+	while(i<=mid && j<=end)
+      {
+	if(a[i]<=a[j])
+		b[k] = a[i++];
+	else
+		b[k] = a[j++];
+		k++;
+      }
+	while(i<=mid)
+		b[k++] = a[i++];
+	while(j<=end)
+		b[k++] = a[j++];
+	for(i=start;i<=end;i++)
+		a[i] = b[i];
+}
+public void divide(int a[],int start,int end)
+  {
+     if(start<end)
+     {
+        int mid = (start + end)/2;
+	divide(a,start,mid);
+	divide(a,mid+1,end);
+	merge(a,start,mid,end);
+     }
+   }
+public void display(int a[])
+ {
+     for(int i:a)
+      System.out.printf("%d ",i);
+  }
 }
